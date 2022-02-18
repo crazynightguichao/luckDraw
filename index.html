@@ -1,0 +1,95 @@
+<!--
+ * @Author: jiaguichao
+ * @Date: 2019-07-03 17:16:14
+ * @LastEditTime: 2022-02-18 09:28:45
+ * @Description: Do not edit
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽奖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;
+        }
+        body{
+            height: 100%;
+            background: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.book118.com%2Fsr1%2FM00%2F16%2F16%2FwKh2Al55VTuILagJAABCYAHsCfQAAiZVgC7SNoAAEJ4628.jpg&refer=http%3A%2F%2Fimg.book118.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1647739277&t=b7f67e78a60a28a40b329fadb28be87c");
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            border: 2px solid #0eb7fa;
+            margin: 0 auto;
+            margin-top: 100px;
+            line-height: 500px;
+            font-size: 72px;
+            text-align: center;
+            color: #1c05ca;
+        }
+        .last{
+            width:500px;
+            height: 80px;
+            border: 2px solid #0eb7fa;
+            margin: auto;
+            margin-top:20px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 80px;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+        .left{
+            width: 248px;
+            height: 100%;
+            background: red;
+        }
+        .right{
+            width: 248px;
+            height: 100%;
+            background: blue;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<div class="last">
+<div class="left">开始</div>
+<div class="right">停止</div>
+</div>
+</body>
+</html>
+<script>
+    let star=document.querySelector(".left");
+    let stop=document.querySelector(".right");
+    let t;
+    let i = 0;
+    let box = new Array('张三','李四','王五','赵六','牛七','高八','钱九');
+    star.onclick=function (){
+        showtime();
+    }
+    function showtime() {
+        clearInterval(t);
+        t = setInterval(function() {
+            document.getElementById("box").innerHTML = box[i];//返回指定id属性的元素获取
+            i++;
+            if (i == box.length - 1) {
+                i = 0;
+            }
+        }, 80);
+    }
+    stop.onclick=function (){
+        clearInterval(t);
+    }
+</script>
